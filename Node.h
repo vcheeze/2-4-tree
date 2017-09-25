@@ -36,16 +36,16 @@ public:
 };
 
 Node::Node() {
-//    puts("Default constructor");
+    puts("Default constructor\n");
 }
 
 Node::Node(const bool leaf)
 : leaf(leaf) {
-//    puts("Leaf constructor");
+    puts("Leaf constructor\n");
 }
 
 Node::~Node() {
-//    printf("Destructor");
+    printf("Destructor\n");
 }
 
 void Node::setNumber(const int number) {
