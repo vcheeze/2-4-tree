@@ -7,6 +7,7 @@
 
 
 #include <cstdio>
+using namespace std;
 
 #define MAX_KEYS 4
 #define MAX_CHILDREN 5
@@ -33,10 +34,11 @@ public:
     Node* getChild(int i);
     void setKey(int k, int i);
     int getKey(int i);
+    void printKeys();
 };
 
 Node::Node() {
-    puts("Default constructor\n");
+    puts("Node default constructor\n");
 }
 
 Node::Node(const bool leaf)
@@ -78,6 +80,12 @@ void Node::setKey(int k, int i) {
 
 int Node::getKey(int i) {
     return keys[i];
+}
+
+void Node::printKeys() {
+    for (int i = 0; i < MAX_KEYS; i++) {
+        cout << getKey(i) << " ";
+    }
 }
 
 
