@@ -149,8 +149,8 @@ void Tree::insertMax(Node* x, int k) {
 
 void Tree::insert(Node* root, int k) {
     int i = root->getNumber();
-    auto * s = new Node();
     if (i == 4) {
+        auto * s = new Node();
         s->setLeaf(false);
         s->setNumber(1);
         s->setChild(root, 0);
@@ -163,7 +163,7 @@ void Tree::insert(Node* root, int k) {
             insertNonFull(s, k);
         }
     } else {
-        if (k > s->getKey(i)) {
+        if (k > root->getKey(i-1)) {
             insertMax(root, k);
         } else {
             insertNonFull(root, k);
