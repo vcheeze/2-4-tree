@@ -81,6 +81,7 @@ void Tree::split(Node* x, int i) {
     int j;
     for (j = 0; j < t; j++) {
         z->setKey(y->getKey(j+t), j);
+        y->setKey(0, j+t); // reset the keys of y to 0
     }
 
     if (!y->getLeaf()) {
@@ -99,6 +100,7 @@ void Tree::split(Node* x, int i) {
         x->setKey(x->getKey(j), j+1);
     }
 
+    x->setKey(x->getKey(i), i+1);
     x->setKey(y->getKey(t-1), i);
     x->setNumber(x->getNumber()+1);
 }

@@ -38,16 +38,16 @@ public:
 };
 
 Node::Node() {
-    puts("Node default constructor\n");
+    puts("Node default constructor");
 }
 
 Node::Node(const bool leaf)
 : leaf(leaf) {
-    puts("Leaf constructor\n");
+    puts("Leaf constructor");
 }
 
 Node::~Node() {
-    printf("Destructor\n");
+    printf("Destructor");
 }
 
 void Node::setNumber(const int number) {
@@ -86,6 +86,7 @@ void Node::printKeys() {
     for (int i = 0; i < MAX_KEYS; i++) {
         cout << getKey(i) << " ";
     }
+    cout << endl;
 }
 
 
