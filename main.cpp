@@ -33,7 +33,7 @@ int main() {
             t.preOrder(t.getRoot());
         } else if (cmd[0] == "ins") {
             if (initialized) {
-                t.insert(t.getRoot(), stoi(cmd[1]));
+                t.insert(/*t.getRoot(), */stoi(cmd[1]));
                 cout << "Inserting " << cmd[1] << endl;
             }
         } else if (cmd[0] == "load") {

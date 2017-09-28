@@ -26,7 +26,7 @@ public:
     void split(Node* x, int i);
     void insertNonFull(Node* x, int k);
     void insertMax(Node* x, int k);
-    void insert(Node* root, int k);
+    void insert(/*Node* root, */int k);
 
     void preOrder(Node* n);
 };
@@ -42,7 +42,9 @@ Tree::~Tree() {
 void Tree::freeNode(Node* n) {
     if (n != nullptr) {
         for (int i = 0; i < 5; i++) {
-            freeNode(n->getChild(i));
+            if (n->getChild(i) != nullptr) {
+                freeNode(n->getChild(i));
+            }
         }
         delete(n);
     }
@@ -90,6 +92,7 @@ void Tree::split(Node* x, int i) {
     if (!y->getLeaf()) {
         for (j = 0; j < t; j++) {
             z->setChild(y->getChild(j+t), j);
+            y->getChild(j+t)->setParent(z);
         }
     }
     y->setNumber(t);
@@ -99,6 +102,7 @@ void Tree::split(Node* x, int i) {
         x->setChild(x->getChild(j), j+1);
     }
     x->setChild(z, i+1);
+    z->setParent(x);
 
     for (j = x->getNumber() - 1; j > i; j--) {
         x->setKey(x->getKey(j), j+1);
@@ -153,16 +157,19 @@ void Tree::insertMax(Node* x, int k) {
 }
 
 
-void Tree::insert(Node* root, int k) {
+void Tree::insert(/*Node* root, */int k) {
     int i = root->getNumber();
     if (i == 4) {
         auto * s = new Node();
+//        auto * temp = new Node();
+//        root->copy_to(temp); // make a copy of root
         s->setLeaf(false);
         s->setNumber(1);
         s->setChild(root, 0);
-//        root->setParent(s);
+        root->setParent(s);
         s->setKey(root->getKey(3), 0);
         root = s;
+//        s->copy_to(root);
         split(s, 0);
         if (k > s->getKey(1)) {
             insertMax(s, k);

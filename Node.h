@@ -26,13 +26,14 @@ public:
     ~Node();
 
     // methods
+    void copy_to(Node* node);
     void setParent(Node* p);
     Node* getParent();
     void setNumber(int number);
     int getNumber();
     void setLeaf(bool l);
     bool getLeaf();
-    void setChild(Node *child, int i);
+    void setChild(Node* child, int i);
     Node* getChild(int i);
     void setKey(int k, int i);
     int getKey(int i);
@@ -50,6 +51,18 @@ Node::Node(const bool leaf)
 
 Node::~Node() {
     printf("Destructor");
+}
+
+void Node::copy_to(Node* node) {
+    node->setParent(parent);
+    node->setNumber(n);
+    for (int i = 0; i < MAX_KEYS; i++) {
+        node->setKey(keys[i], i);
+    }
+    node->setLeaf(leaf);
+    for (int i = 0; i < MAX_CHILDREN; i++) {
+        node->setChild(c[i], i);
+    }
 }
 
 void Node::setParent(Node* p) {
@@ -76,7 +89,7 @@ bool Node::getLeaf() {
     return leaf;
 }
 
-void Node::setChild(Node *child, int i) {
+void Node::setChild(Node* child, int i) {
     c[i] = child;
 }
 
