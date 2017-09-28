@@ -2,8 +2,7 @@
 // Created by Peeta on 9/24/17.
 //
 
-// in split, work with leaf nodes linked list
-// make sure after split, leaf nodes are set
+// work on insertMax and insertNonFull
 
 #ifndef INC_2_4_TREE_TREE_H
 #define INC_2_4_TREE_TREE_H
@@ -14,25 +13,31 @@ using namespace std;
 
 class Tree {
     Node* root;
+//    Node* leaf_head;
     void freeNode(Node* n);
+//    Node* findInsertPos(Node* curr, int k);
 public:
     Tree();
     ~Tree();
 
     void setRoot(Node* n);
     Node* getRoot();
+//    void setLeafHead(Node *n);
+//    Node* getLeafHead();
 
     int search(Node* x, int k);
     void split(Node* x, int i);
     void insertNonFull(Node* x, int k);
     void insertMax(Node* x, int k);
     void insert(int k);
+    void range(int k1, int k2);
 
     void preOrder(Node* n);
 };
 
 Tree::Tree() {
     root = nullptr;
+//    leaf_head = nullptr;
 }
 
 Tree::~Tree() {
@@ -50,6 +55,35 @@ void Tree::freeNode(Node* n) {
     }
 }
 
+/*Node* Tree::findInsertPos(Node* curr, int k) {
+    int i = 0;
+    while(curr->getKey(i) != 0) {
+        if (k > curr->getKey(i)) { // keep going
+            if (i == 4) { // reached the last key of this node
+                findInsertPos(curr->getChild(4), k);
+            } else {
+                i++;
+            }
+        } else if (k <= curr->getKey(i)) { // found a potential position
+            if (i == 0) { // if curr->getKey(i) is the first key of this node
+                Node* p = curr->getParent();
+                for(int j = 0; j < p->getNumber(); j++) {
+                    if (k < p->getKey(j)) {
+                        return p->getChild(j);
+                    }
+                }
+            } else {
+                return curr;
+            }
+        }
+    }
+    findInsertPos(curr->getChild(4), k);
+}*/
+
+void Tree::range(int k1, int k2) {
+
+}
+
 void Tree::setRoot(Node* n){
     root = n;
 }
@@ -57,6 +91,14 @@ void Tree::setRoot(Node* n){
 Node* Tree::getRoot() {
     return root;
 }
+
+/*void Tree::setLeafHead(Node *n) {
+    leaf_head = n;
+}
+
+Node* Tree::getLeafHead() {
+    return leaf_head;
+}*/
 
 int Tree::search(Node* x, int k) { // what should this return?
     int i = 1;
@@ -92,11 +134,13 @@ void Tree::split(Node* x, int i) {
     if (!y->getLeaf()) {
         for (j = 0; j < t; j++) {
             z->setChild(y->getChild(j+t), j);
-            y->getChild(j+t)->setParent(z);
+            y->setChild(nullptr, j+t); // reset the pointers of y to null
         }
     }
     y->setNumber(t);
-    y->setChild(z, 4); // make the smaller leaf node point to the larger leaf node
+    if (y->getLeaf()) {
+        y->setChild(z, 4); // make the smaller leaf node point to the larger leaf node
+    }
 
     for (j = x->getNumber()-1; j >= i+1; j--) { // check this
         x->setChild(x->getChild(j), j+1);
@@ -158,18 +202,28 @@ void Tree::insertMax(Node* x, int k) {
 
 
 void Tree::insert(int k) {
+/*    Node* pos = findInsertPos(leaf_head, k);
+    int i = pos->getNumber();
+    if (i == 4) {
+        auto *s = new Node(true);
+
+    } else {
+        if (k > pos->getKey(i-1)) {
+            insertMax(pos, k);
+        } else {
+            insertNonFull(pos, k);
+        }
+    }*/
+
     int i = root->getNumber();
     if (i == 4) {
         auto * s = new Node();
-//        auto * temp = new Node();
-//        root->copy_to(temp); // make a copy of root
         s->setLeaf(false);
         s->setNumber(1);
         s->setChild(root, 0);
         root->setParent(s);
         s->setKey(root->getKey(3), 0);
         root = s;
-//        s->copy_to(root);
         split(s, 0);
         if (k > s->getKey(1)) {
             insertMax(s, k);
@@ -191,7 +245,7 @@ void Tree::preOrder(Node *n) {
 
         for (int i = 0; i < MAX_CHILDREN; i++) {
             if (n->getChild(i) != nullptr) {
-                n->getChild(i)->printKeys();
+                preOrder(n->getChild(i));
             }
         }
     }

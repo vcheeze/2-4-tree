@@ -53,7 +53,7 @@ Node::~Node() {
     printf("Destructor");
 }
 
-void Node::copy_to(Node* node) {
+/*void Node::copy_to(Node* node) {
     node->setParent(parent);
     node->setNumber(n);
     for (int i = 0; i < MAX_KEYS; i++) {
@@ -63,7 +63,7 @@ void Node::copy_to(Node* node) {
     for (int i = 0; i < MAX_CHILDREN; i++) {
         node->setChild(c[i], i);
     }
-}
+}*/
 
 void Node::setParent(Node* p) {
     parent = p;
