@@ -26,6 +26,8 @@ public:
     ~Node();
 
     // methods
+    void setParent(Node* p);
+    Node* getParent();
     void setNumber(int number);
     int getNumber();
     void setLeaf(bool l);
@@ -48,6 +50,14 @@ Node::Node(const bool leaf)
 
 Node::~Node() {
     printf("Destructor");
+}
+
+void Node::setParent(Node* p) {
+    parent = p;
+}
+
+Node* Node::getParent() {
+    return parent;
 }
 
 void Node::setNumber(const int number) {

@@ -2,11 +2,15 @@
 // Created by Peeta on 9/24/17.
 //
 
+// in split, work with leaf nodes linked list
+// make sure after split, leaf nodes are set
+
 #ifndef INC_2_4_TREE_TREE_H
 #define INC_2_4_TREE_TREE_H
 
 #include "Node.h"
 using namespace std;
+
 
 class Tree {
     Node* root;
@@ -18,14 +22,13 @@ public:
     void setRoot(Node* n);
     Node* getRoot();
 
-    Node* search(Node* x, int k);
+    int search(Node* x, int k);
     void split(Node* x, int i);
     void insertNonFull(Node* x, int k);
     void insertMax(Node* x, int k);
     void insert(Node* root, int k);
 
     void preOrder(Node* n);
-//    void treePrinter();
 };
 
 Tree::Tree() {
@@ -53,7 +56,7 @@ Node* Tree::getRoot() {
     return root;
 }
 
-Node* Tree::search(Node* x, int k) {
+int Tree::search(Node* x, int k) { // what should this return?
     int i = 1;
 
     while(i <= x->getNumber() && k > x->getKey(i-1)) {
@@ -61,11 +64,11 @@ Node* Tree::search(Node* x, int k) {
     }
 
     if (i <= x->getNumber() &&  k == x->getKey(i-1)) {
-        return x->getChild(i-1);
+        return x->getKey(i-1);
     }
 
     if (x->getLeaf()) {
-        return nullptr;
+        return 0;
     } else {
         return search(x->getChild(i-1), k);
     }
@@ -90,6 +93,7 @@ void Tree::split(Node* x, int i) {
         }
     }
     y->setNumber(t);
+    y->setChild(z, 4); // make the smaller leaf node point to the larger leaf node
 
     for (j = x->getNumber()-1; j > i+1; j--) {
         x->setChild(x->getChild(j), j+1);
@@ -139,7 +143,7 @@ void Tree::insertMax(Node* x, int k) {
         x->setKey(k, i);
         x->setNumber(x->getNumber() + 1);
     } else {
-        x->setKey(k, i);
+        x->setKey(k, i-1);
         if (x->getChild(i-1)->getNumber() == 4) {
             split(x, i-1);
             i++;
@@ -156,6 +160,7 @@ void Tree::insert(Node* root, int k) {
         s->setLeaf(false);
         s->setNumber(1);
         s->setChild(root, 0);
+//        root->setParent(s);
         s->setKey(root->getKey(3), 0);
         root = s;
         split(s, 0);
@@ -184,10 +189,6 @@ void Tree::preOrder(Node *n) {
         }
     }
 }
-
-//void Tree::treePrinter() {
-//
-//}
 
 
 #endif //INC_2_4_TREE_TREE_H
