@@ -26,7 +26,7 @@ public:
     void split(Node* x, int i);
     void insertNonFull(Node* x, int k);
     void insertMax(Node* x, int k);
-    void insert(/*Node* root, */int k);
+    void insert(int k);
 
     void preOrder(Node* n);
 };
@@ -98,7 +98,7 @@ void Tree::split(Node* x, int i) {
     y->setNumber(t);
     y->setChild(z, 4); // make the smaller leaf node point to the larger leaf node
 
-    for (j = x->getNumber()-1; j > i+1; j--) {
+    for (j = x->getNumber()-1; j >= i+1; j--) { // check this
         x->setChild(x->getChild(j), j+1);
     }
     x->setChild(z, i+1);
@@ -157,7 +157,7 @@ void Tree::insertMax(Node* x, int k) {
 }
 
 
-void Tree::insert(/*Node* root, */int k) {
+void Tree::insert(int k) {
     int i = root->getNumber();
     if (i == 4) {
         auto * s = new Node();

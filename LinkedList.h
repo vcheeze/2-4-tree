@@ -1,5 +1,7 @@
 //
 // Created by Peeta on 9/28/17.
+// Adapted from implementation in:
+// https://www.codementor.io/codementorteam/a-comprehensive-guide-to-implementation-of-singly-linked-list-using-c_plus_plus-ondlm5azr
 //
 
 #ifndef INC_2_4_TREE_LINKEDLIST_H

@@ -1,0 +1,20 @@
+ins 1000
+ins 1001
+ins 1002
+ins 1003
+ins 1004
+print
+ins 1009
+print
+ins 1007
+print
+ins 1015
+print
+ins 900
+print
+ins 950
+print
+ins 925
+print
+ins 975
+print

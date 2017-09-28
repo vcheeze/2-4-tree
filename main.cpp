@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <fstream>
 #include "tree.h"
 using namespace std;
 
@@ -23,21 +24,45 @@ int main() {
         copy(istream_iterator<string>(iss),
              istream_iterator<string>(),
              back_inserter(cmd));
+//        cout << cmd.size() << endl;
 
         if (cmd[0] == "init" && !initialized) {
             t.setRoot(new Node(true));
             initialized = true;
             cout << "Initialized" << endl;
-        } else if (cmd[0] == "print") { // print the contents of the tree in pre order
+        } else if (cmd.size() == 1 && cmd[0] == "print") { // print the contents of the tree in pre order
 //            t.getRoot()->printKeys();
             t.preOrder(t.getRoot());
-        } else if (cmd[0] == "ins") {
+        } else if (/*cmd.size() == 5 && */cmd[0] == "ins") {
             if (initialized) {
                 t.insert(/*t.getRoot(), */stoi(cmd[1]));
                 cout << "Inserting " << cmd[1] << endl;
             }
         } else if (cmd[0] == "load") {
-            cout << "Loading file" << endl;
+            string line, path = "../";
+            path += cmd[1];
+            ifstream inputFile;
+            inputFile.open(path);
+            if (inputFile.is_open()) {
+//                cout << "Successfully loaded file" << endl;
+                while(getline(inputFile, line)) {
+                    // parse each line
+                    istringstream iss2(line);
+                    vector<string> bulk;
+                    copy(istream_iterator<string>(iss2),
+                         istream_iterator<string>(),
+                         back_inserter(bulk));
+                    if (bulk[0] == "print") {
+                        t.preOrder(t.getRoot());
+                        cout << endl;
+                    } else {
+                        t.insert(stoi(bulk[1]));
+                    }
+                }
+                inputFile.close();
+            } else {
+                cout << "Failed to load file" << endl;
+            }
         } else if (cmd[0] == "find") {
             int key = t.search(t.getRoot(), stoi(cmd[1]));
             cout << "Searching for " << cmd[1] << "..." << endl;
