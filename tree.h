@@ -8,22 +8,24 @@
 #define INC_2_4_TREE_TREE_H
 
 #include "Node.h"
+#include "LinkedList.h"
 using namespace std;
 
 
 class Tree {
     Node* root;
-//    Node* leaf_head;
+    Node* leaf_head;
     void freeNode(Node* n);
 //    Node* findInsertPos(Node* curr, int k);
+    void insertRecord(Node* x, int pos, string id, string name, string grade);
 public:
     Tree();
     ~Tree();
 
     void setRoot(Node* n);
     Node* getRoot();
-//    void setLeafHead(Node *n);
-//    Node* getLeafHead();
+    void setLeafHead(Node *n);
+    Node* getLeafHead();
 
     int search(Node* x, int k);
     void split(Node* x, int i);
@@ -37,7 +39,7 @@ public:
 
 Tree::Tree() {
     root = nullptr;
-//    leaf_head = nullptr;
+    leaf_head = nullptr;
 }
 
 Tree::~Tree() {
@@ -80,6 +82,12 @@ void Tree::freeNode(Node* n) {
     findInsertPos(curr->getChild(4), k);
 }*/
 
+void Tree::insertRecord(Node *x, int pos, string id, string name, string grade) {
+    auto* l = new LinkedList;
+    l->createNode(id, name, grade);
+    x->setChild(l, pos);
+}
+
 void Tree::range(int k1, int k2) {
 
 }
@@ -92,13 +100,13 @@ Node* Tree::getRoot() {
     return root;
 }
 
-/*void Tree::setLeafHead(Node *n) {
+void Tree::setLeafHead(Node *n) {
     leaf_head = n;
 }
 
 Node* Tree::getLeafHead() {
     return leaf_head;
-}*/
+}
 
 int Tree::search(Node* x, int k) { // what should this return?
     int i = 1;

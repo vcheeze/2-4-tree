@@ -5,7 +5,7 @@
 #include "tree.h"
 using namespace std;
 
-// work on else condition for invalid command
+
 
 
 int main() {
@@ -26,11 +26,31 @@ int main() {
              back_inserter(cmd));
 //        cout << cmd.size() << endl;
 
+        if (cmd[0] != "init"
+            && cmd[0] != "exit"
+            && cmd[0] != "print"
+            && cmd[0] != "ins"
+            && cmd[0] != "load"
+            && cmd[0] != "find"
+            && cmd[0] != "range"
+            && cmd[0] != "gpa"
+            && cmd[0] != "top"
+            && cmd[0] != "verify"
+            && cmd[0] != "del") {
+            cout << "Invalid command. Please enter a valid command." << endl;
+        }
+
+        if (cmd[0] == "exit") {
+            cout << "Exit the Program" << endl;
+            break;
+        }
+
+
         if (initialized) {
             if (cmd.size() == 1 && cmd[0] == "print") { // print the contents of the tree in pre order
                 t.preOrder(t.getRoot());
             } else if (/*cmd.size() == 5 && */cmd[0] == "ins") {
-                t.insert(/*t.getRoot(), */stoi(cmd[1]));
+                t.insert(stoi(cmd[1]));
                 cout << "Inserting " << cmd[1] << endl;
             } else if (cmd[0] == "load") {
                 string line, path = "../";
@@ -38,7 +58,6 @@ int main() {
                 ifstream inputFile;
                 inputFile.open(path);
                 if (inputFile.is_open()) {
-//                cout << "Successfully loaded file" << endl;
                     while (getline(inputFile, line)) {
                         // parse each line
                         istringstream iss2(line);
@@ -79,23 +98,13 @@ int main() {
                 cout << "Verification result: " << endl;
             } else if (cmd[0] == "del") {
                 cout << "Deleting course " << cmd[2] << " from student " << cmd[1] << endl;
-            }/* else {
-                cout << "Invalid command. Please enter a valid command." << endl;
-            }*/
+            }
         } else {
             if (cmd[0] == "init") {
                 t.setRoot(new Node(true));
-//            t.setLeafHead(t.getRoot());
                 initialized = true;
                 cout << "Initialized" << endl;
-            }/* else {
-                cout << "Invalid command. Please enter a valid command." << endl;
-            }*/
-        }
-
-        if (cmd[0] == "exit") {
-            cout << "Exit the Program" << endl;
-            break;
+            }
         }
 
         cout << "> ";

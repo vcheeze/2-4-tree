@@ -18,7 +18,8 @@ class Node {
     int n = 0;
     int keys[MAX_KEYS] = {0};
     bool leaf = false;
-    Node *c[MAX_CHILDREN] = {nullptr};
+    // set children to void pointer so that it can point at Node as well as LinkedList in the leaf nodes
+    void *c[MAX_CHILDREN] = {nullptr};
 public:
     Node();
 
@@ -26,14 +27,13 @@ public:
     ~Node();
 
     // methods
-    void copy_to(Node* node);
     void setParent(Node* p);
     Node* getParent();
     void setNumber(int number);
     int getNumber();
     void setLeaf(bool l);
     bool getLeaf();
-    void setChild(Node* child, int i);
+    void setChild(void* child, int i);
     Node* getChild(int i);
     void setKey(int k, int i);
     int getKey(int i);
@@ -89,12 +89,13 @@ bool Node::getLeaf() {
     return leaf;
 }
 
-void Node::setChild(Node* child, int i) {
+void Node::setChild(void* child, int i) {
     c[i] = child;
 }
 
 Node *Node::getChild(int i) {
-    return c[i];
+    auto * node = static_cast<Node*>(c[i]);
+    return node;
 }
 
 void Node::setKey(int k, int i) {
