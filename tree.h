@@ -46,7 +46,7 @@ Tree::~Tree() {
 
 void Tree::freeNode(Node* n) {
     if (n != nullptr) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < MAX_CHILDREN-1; i++) {
             if (n->getChild(i) != nullptr) {
                 freeNode(n->getChild(i));
             }
@@ -243,7 +243,7 @@ void Tree::preOrder(Node *n) {
     if (n) {
         n->printKeys();
 
-        for (int i = 0; i < MAX_CHILDREN; i++) {
+        for (int i = 0; i < MAX_CHILDREN-1; i++) {
             if (n->getChild(i) != nullptr) {
                 preOrder(n->getChild(i));
             }

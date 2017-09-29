@@ -5,7 +5,7 @@
 #include "tree.h"
 using namespace std;
 
-
+// work on else condition for invalid command
 
 
 int main() {
@@ -25,18 +25,6 @@ int main() {
              istream_iterator<string>(),
              back_inserter(cmd));
 //        cout << cmd.size() << endl;
-
-        if (cmd[0] == "init" && !initialized) {
-            t.setRoot(new Node(true));
-//            t.setLeafHead(t.getRoot());
-            initialized = true;
-            cout << "Initialized" << endl;
-        } else if (cmd[0] == "exit") {
-            cout << "Exit the Program" << endl;
-            break;
-        } else {
-            cout << "Invalid command. Please enter a valid command." << endl;
-        }
 
         if (initialized) {
             if (cmd.size() == 1 && cmd[0] == "print") { // print the contents of the tree in pre order
@@ -91,7 +79,23 @@ int main() {
                 cout << "Verification result: " << endl;
             } else if (cmd[0] == "del") {
                 cout << "Deleting course " << cmd[2] << " from student " << cmd[1] << endl;
-            }
+            }/* else {
+                cout << "Invalid command. Please enter a valid command." << endl;
+            }*/
+        } else {
+            if (cmd[0] == "init") {
+                t.setRoot(new Node(true));
+//            t.setLeafHead(t.getRoot());
+                initialized = true;
+                cout << "Initialized" << endl;
+            }/* else {
+                cout << "Invalid command. Please enter a valid command." << endl;
+            }*/
+        }
+
+        if (cmd[0] == "exit") {
+            cout << "Exit the Program" << endl;
+            break;
         }
 
         cout << "> ";
