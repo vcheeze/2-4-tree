@@ -45,7 +45,7 @@ int main() {
         }
 
 
-        if (initialized) {
+        if (initialized) { // if tree is initialized
             if (cmd[0] == "print" && cmd.size() == 1) { // print the contents of the tree in pre order
                 t.preOrder(t.getRoot());
             } else if (cmd[0] == "ins") {
@@ -68,8 +68,11 @@ int main() {
                         if (bulk[0] == "print") {
                             t.preOrder(t.getRoot());
                             cout << endl;
-                        } else {
+                        } else if (bulk[0] == "ins") {
                             t.insert(stoi(bulk[1]), bulk[2], bulk[3], bulk[4]);
+                        } else {
+                            cout << "Invalid command found in file" << endl;
+                            break;
                         }
                     }
                     inputFile.close();
@@ -107,7 +110,7 @@ int main() {
                     cout << "Successfully deleted course" << endl;
                 }
             }
-        } else {
+        } else { // if tree is not initialized
             if (cmd[0] == "init") {
                 t.setRoot(new Node(true));
                 t.setLeafHead(t.getRoot());

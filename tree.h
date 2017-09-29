@@ -15,7 +15,6 @@ class Tree {
     Node* root;
     Node* leaf_head;
     void freeNode(Node* n);
-//    Node* findInsertPos(Node* curr, int k);
 public:
     Tree();
     ~Tree();
@@ -59,31 +58,6 @@ void Tree::freeNode(Node* n) {
         }
     }
 }
-
-/*Node* Tree::findInsertPos(Node* curr, int k) {
-    int i = 0;
-    while(curr->getKey(i) != 0) {
-        if (k > curr->getKey(i)) { // keep going
-            if (i == 4) { // reached the last key of this node
-                findInsertPos(curr->getChild(4), k);
-            } else {
-                i++;
-            }
-        } else if (k <= curr->getKey(i)) { // found a potential position
-            if (i == 0) { // if curr->getKey(i) is the first key of this node
-                Node* p = curr->getParent();
-                for(int j = 0; j < p->getNumber(); j++) {
-                    if (k < p->getKey(j)) {
-                        return p->getChild(j);
-                    }
-                }
-            } else {
-                return curr;
-            }
-        }
-    }
-    findInsertPos(curr->getChild(4), k);
-}*/
 
 void Tree::range(int k1, int k2) {
 

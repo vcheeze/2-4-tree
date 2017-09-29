@@ -9,6 +9,7 @@ print
 ins 1007
 print
 ins 1015
+something
 print
 ins 900
 print
