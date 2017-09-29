@@ -77,14 +77,13 @@ int main() {
                     cout << "Failed to load file" << endl;
                 }
             } else if (cmd[0] == "find" && cmd.size() == 2) { // print out info of the student
-                /*Node* n = t.search(t.getRoot(), stoi(cmd[1]));
+                auto n = t.search(t.getRoot(), stoi(cmd[1]));
                 cout << "Searching for records of student " << cmd[1] << "..." << endl;
-                if (n == nullptr) {
+                if (get<int>(n) == -1) {
                     cout << "Record not found " << cmd[1] << endl;
                 } else {
-                    cout << "Record found: " << endl;
-                    n->printKeys();
-                }*/
+                    cout << "Record found: " << get<Node*>(n)->getKey(get<int>(n)) << endl;
+                }
             } else if (cmd[0] == "range") {
                 cout << "Range from " << cmd[1] << " to " << cmd[2] << endl;
             } else if (cmd[0] == "gpa") {
