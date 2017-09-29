@@ -27,6 +27,7 @@ class LinkedList {
 public:
     // constructor
     LinkedList();
+    ~LinkedList();
 
     // methods
     void createNode(string id, string name, string grade);
@@ -41,6 +42,17 @@ public:
 LinkedList::LinkedList() {
     head = nullptr;
     tail = nullptr;
+}
+
+LinkedList::~LinkedList() {
+    node *curr = head;
+    node *next;
+    while(curr != nullptr) {
+        next = curr->next;
+        delete(curr);
+        curr = next;
+    }
+    head = nullptr;
 }
 
 void LinkedList::createNode(string id, string name, string grade) {

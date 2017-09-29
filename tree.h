@@ -2,7 +2,6 @@
 // Created by Peeta on 9/24/17.
 //
 
-// work on insertMax and insertNonFull
 
 #ifndef INC_2_4_TREE_TREE_H
 #define INC_2_4_TREE_TREE_H
@@ -17,7 +16,6 @@ class Tree {
     Node* leaf_head;
     void freeNode(Node* n);
 //    Node* findInsertPos(Node* curr, int k);
-    void insertRecord(Node* x, int pos, string id, string name, string grade);
 public:
     Tree();
     ~Tree();
@@ -27,11 +25,12 @@ public:
     void setLeafHead(Node *n);
     Node* getLeafHead();
 
-    int search(Node* x, int k);
+    tuple<Node*, int> search(Node* x, int k);
+    void insertRecord(Node* x, int pos, string id, string name, string grade);
     void split(Node* x, int i);
     void insertNonFull(Node* x, int k);
     void insertMax(Node* x, int k);
-    void insert(int k);
+    void insert(int k, string id, string name, string grade);
     void range(int k1, int k2);
 
     void preOrder(Node* n);
@@ -48,12 +47,16 @@ Tree::~Tree() {
 
 void Tree::freeNode(Node* n) {
     if (n != nullptr) {
-        for (int i = 0; i < MAX_CHILDREN-1; i++) {
-            if (n->getChild(i) != nullptr) {
-                freeNode(n->getChild(i));
+        if (n->getLeaf()) {
+            delete(n);
+        } else {
+            for (int i = 0; i < MAX_CHILDREN - 1; i++) {
+                if (n->getChild(i) != nullptr) {
+                    freeNode(n->getChild(i));
+                }
             }
+            delete (n);
         }
-        delete(n);
     }
 }
 
@@ -82,12 +85,6 @@ void Tree::freeNode(Node* n) {
     findInsertPos(curr->getChild(4), k);
 }*/
 
-void Tree::insertRecord(Node *x, int pos, string id, string name, string grade) {
-    auto* l = new LinkedList;
-    l->createNode(id, name, grade);
-    x->setChild(l, pos);
-}
-
 void Tree::range(int k1, int k2) {
 
 }
@@ -108,7 +105,7 @@ Node* Tree::getLeafHead() {
     return leaf_head;
 }
 
-int Tree::search(Node* x, int k) { // what should this return?
+tuple<Node*, int> Tree::search(Node* x, int k) { // return node pointer of the key found
     int i = 1;
 
     while(i <= x->getNumber() && k > x->getKey(i-1)) {
@@ -116,13 +113,29 @@ int Tree::search(Node* x, int k) { // what should this return?
     }
 
     if (i <= x->getNumber() &&  k == x->getKey(i-1)) {
-        return x->getKey(i-1);
+        if (x->getLeaf()) {
+            return make_tuple(x, i-1);
+        } else {
+            return search(x->getChild(i-1), k);
+        }
     }
 
-    if (x->getLeaf()) {
-        return 0;
+    return make_tuple(x, -1);
+
+/*    if (x->getLeaf()) {
+        return nullptr;
     } else {
         return search(x->getChild(i-1), k);
+    }*/
+}
+
+void Tree::insertRecord(Node *x, int pos, string id, string name, string grade) {
+    auto* l = new LinkedList;
+    l->createNode(id, name, grade);
+    if (x->getLeaf()) {
+        x->setChild(l, 0);
+    } else {
+        cout << "Node is not a leaf node. Cannot insert record." << endl;
     }
 }
 
@@ -209,19 +222,12 @@ void Tree::insertMax(Node* x, int k) {
 }
 
 
-void Tree::insert(int k) {
-/*    Node* pos = findInsertPos(leaf_head, k);
-    int i = pos->getNumber();
-    if (i == 4) {
-        auto *s = new Node(true);
-
-    } else {
-        if (k > pos->getKey(i-1)) {
-            insertMax(pos, k);
-        } else {
-            insertNonFull(pos, k);
-        }
-    }*/
+void Tree::insert(int k, string id, string name, string grade) {
+    auto x = search(root, k);
+    if (get<int>(x) != -1) { // if the node with key k is found
+        insertRecord(get<Node*>(x), get<int>(x), id, name, grade);
+        return;
+    }
 
     int i = root->getNumber();
     if (i == 4) {
@@ -249,11 +255,14 @@ void Tree::insert(int k) {
 
 void Tree::preOrder(Node *n) {
     if (n) {
-        n->printKeys();
-
-        for (int i = 0; i < MAX_CHILDREN-1; i++) {
-            if (n->getChild(i) != nullptr) {
-                preOrder(n->getChild(i));
+        if (n->getLeaf()) { // if n is a leaf node, do not print the children
+            n->printKeys();
+        } else {
+            n->printKeys();
+            for (int i = 0; i < MAX_CHILDREN - 1; i++) {
+                if (n->getChild(i) != nullptr) {
+                    preOrder(n->getChild(i));
+                }
             }
         }
     }

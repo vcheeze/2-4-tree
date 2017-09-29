@@ -40,19 +40,19 @@ int main() {
             cout << "Invalid command. Please enter a valid command." << endl;
         }
 
-        if (cmd[0] == "exit") {
+        if (cmd[0] == "exit" && cmd.size() == 1) {
             cout << "Exit the Program" << endl;
             break;
         }
 
 
         if (initialized) {
-            if (cmd.size() == 1 && cmd[0] == "print") { // print the contents of the tree in pre order
+            if (cmd[0] == "print" && cmd.size() == 1) { // print the contents of the tree in pre order
                 t.preOrder(t.getRoot());
-            } else if (/*cmd.size() == 5 && */cmd[0] == "ins") {
-                t.insert(stoi(cmd[1]));
+            } else if (cmd[0] == "ins") {
+                t.insert(stoi(cmd[1]), cmd[2], cmd[3], cmd[4]);
                 cout << "Inserting " << cmd[1] << endl;
-            } else if (cmd[0] == "load") {
+            } else if (cmd[0] == "load" && cmd.size() == 2) {
                 string line, path = "../";
                 path += cmd[1];
                 ifstream inputFile;
@@ -69,21 +69,22 @@ int main() {
                             t.preOrder(t.getRoot());
                             cout << endl;
                         } else {
-                            t.insert(stoi(bulk[1]));
+                            t.insert(stoi(bulk[1]), bulk[2], bulk[3], bulk[4]);
                         }
                     }
                     inputFile.close();
                 } else {
                     cout << "Failed to load file" << endl;
                 }
-            } else if (cmd[0] == "find") {
-                int key = t.search(t.getRoot(), stoi(cmd[1]));
-                cout << "Searching for " << cmd[1] << "..." << endl;
-                if (key == 0) {
+            } else if (cmd[0] == "find" && cmd.size() == 2) { // print out info of the student
+                /*Node* n = t.search(t.getRoot(), stoi(cmd[1]));
+                cout << "Searching for records of student " << cmd[1] << "..." << endl;
+                if (n == nullptr) {
                     cout << "Record not found " << cmd[1] << endl;
                 } else {
-                    cout << "Record found: " << key << endl;
-                }
+                    cout << "Record found: " << endl;
+                    n->printKeys();
+                }*/
             } else if (cmd[0] == "range") {
                 cout << "Range from " << cmd[1] << " to " << cmd[2] << endl;
             } else if (cmd[0] == "gpa") {
