@@ -83,6 +83,7 @@ int main() {
                     cout << "Record not found " << cmd[1] << endl;
                 } else {
                     cout << "Record found: " << get<Node*>(n)->getKey(get<int>(n)) << endl;
+                    get<Node*>(n)->getRecords(get<int>(n))->display();
                 }
             } else if (cmd[0] == "range") {
                 cout << "Range from " << cmd[1] << " to " << cmd[2] << endl;

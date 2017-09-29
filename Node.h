@@ -7,6 +7,7 @@
 
 
 #include <cstdio>
+#include "LinkedList.h"
 using namespace std;
 
 #define MAX_KEYS 4
@@ -35,6 +36,7 @@ public:
     bool getLeaf();
     void setChild(void* child, int i);
     Node* getChild(int i);
+    LinkedList* getRecords(int i);
     void setKey(int k, int i);
     int getKey(int i);
     void printKeys();
@@ -82,8 +84,13 @@ void Node::setChild(void* child, int i) {
 }
 
 Node *Node::getChild(int i) {
-    auto * node = static_cast<Node*>(c[i]);
+    auto *node = static_cast<Node*>(c[i]);
     return node;
+}
+
+LinkedList* Node::getRecords(int i) {
+    auto *l = static_cast<LinkedList*>(c[i]);
+    return l;
 }
 
 void Node::setKey(int k, int i) {

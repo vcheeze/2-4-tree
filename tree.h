@@ -244,11 +244,21 @@ void Tree::insert(int k, string id, string name, string grade) {
         } else {
             insertNonFull(s, k);
         }
+        auto y = search(root, k);
+        if (get<int>(y) != -1) { // if the node with key k is found
+            insertRecord(get<Node*>(y), get<int>(y), id, name, grade);
+            return;
+        }
     } else {
         if (k > root->getKey(i-1)) {
             insertMax(root, k);
         } else {
             insertNonFull(root, k);
+        }
+        auto z = search(root, k);
+        if (get<int>(z) != -1) { // if the node with key k is found
+            insertRecord(get<Node*>(z), get<int>(z), id, name, grade);
+            return;
         }
     }
 }
