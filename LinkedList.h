@@ -36,6 +36,7 @@ public:
     void delete_first();
     void delete_last();
     void delete_pos(int pos);
+    void delete_node(string id);
     void display();
 };
 
@@ -49,7 +50,7 @@ LinkedList::~LinkedList() {
     node *next;
     while(curr != nullptr) {
         next = curr->next;
-        delete(curr);
+        delete curr;
         curr = next;
     }
     head = nullptr;
@@ -128,6 +129,30 @@ void LinkedList::delete_pos(int pos) {
         curr = curr->next;
     }
     prev->next = curr->next;
+    delete curr;
+}
+
+/* Helpful tutorial: https://www.cs.bu.edu/teaching/c/linked-list/delete/ */
+void LinkedList::delete_node(string id) {
+    auto *curr = new node;
+    node *prev = nullptr;
+
+    for (curr = head;
+         curr != nullptr;
+         prev = curr, curr = curr->next) {
+
+        if (curr->courseID == id) { // found the value
+            if (prev == nullptr) {
+                // fix beginning pointer
+                head = curr->next;
+            } else {
+                // previous node's next skips over removed node;
+                prev->next = curr->next;
+            }
+            delete curr;
+            return;
+        }
+    }
 }
 
 void LinkedList::display() {

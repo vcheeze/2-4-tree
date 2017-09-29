@@ -55,7 +55,7 @@ void Tree::freeNode(Node* n) {
                     freeNode(n->getChild(i));
                 }
             }
-            delete (n);
+            delete n;
         }
     }
 }

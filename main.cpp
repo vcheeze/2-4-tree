@@ -24,7 +24,6 @@ int main() {
         copy(istream_iterator<string>(iss),
              istream_iterator<string>(),
              back_inserter(cmd));
-//        cout << cmd.size() << endl;
 
         if (cmd[0] != "init"
             && cmd[0] != "exit"
@@ -52,9 +51,10 @@ int main() {
             } else if (cmd[0] == "ins") {
                 t.insert(stoi(cmd[1]), cmd[2], cmd[3], cmd[4]);
                 cout << "Inserting " << cmd[1] << endl;
-            } else if (cmd[0] == "load" && cmd.size() == 2) {
+            } else if (cmd[0] == "load" && cmd.size() == 2) { // type the file name without the ".txt" extension
                 string line, path = "../";
                 path += cmd[1];
+                path += ".txt";
                 ifstream inputFile;
                 inputFile.open(path);
                 if (inputFile.is_open()) {
@@ -80,12 +80,12 @@ int main() {
                 auto n = t.search(t.getRoot(), stoi(cmd[1]));
                 cout << "Searching for records of student " << cmd[1] << "..." << endl;
                 if (get<int>(n) == -1) {
-                    cout << "Record not found " << cmd[1] << endl;
+                    cout << "Record not found: " << cmd[1] << endl;
                 } else {
                     cout << "Record found: " << get<Node*>(n)->getKey(get<int>(n)) << endl;
                     get<Node*>(n)->getRecords(get<int>(n))->display();
                 }
-            } else if (cmd[0] == "range") {
+            } else if (cmd[0] == "range" && cmd.size() == 3) {
                 cout << "Range from " << cmd[1] << " to " << cmd[2] << endl;
             } else if (cmd[0] == "gpa") {
                 if (cmd[2].empty()) {
@@ -99,6 +99,13 @@ int main() {
                 cout << "Verification result: " << endl;
             } else if (cmd[0] == "del") {
                 cout << "Deleting course " << cmd[2] << " from student " << cmd[1] << endl;
+                auto d = t.search(t.getRoot(), stoi(cmd[1]));
+                if (get<int>(d) == -1) {
+                    cout << "Student not found" << endl;
+                } else {
+                    get<Node*>(d)->getRecords(get<int>(d))->delete_node(cmd[2]);
+                    cout << "Successfully deleted course" << endl;
+                }
             }
         } else {
             if (cmd[0] == "init") {
@@ -106,6 +113,8 @@ int main() {
                 t.setLeafHead(t.getRoot());
                 initialized = true;
                 cout << "Initialized" << endl;
+            } else {
+                cout << "Tree not initialized: use 'init' to initialize." << endl;
             }
         }
 
