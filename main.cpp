@@ -103,6 +103,7 @@ int main() {
         } else {
             if (cmd[0] == "init") {
                 t.setRoot(new Node(true));
+                t.setLeafHead(t.getRoot());
                 initialized = true;
                 cout << "Initialized" << endl;
             }

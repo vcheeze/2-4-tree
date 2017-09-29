@@ -38,7 +38,7 @@ public:
 
 Tree::Tree() {
     root = nullptr;
-    leaf_head = nullptr;
+    leaf_head = root;
 }
 
 Tree::~Tree() {
@@ -47,7 +47,7 @@ Tree::~Tree() {
 
 void Tree::freeNode(Node* n) {
     if (n != nullptr) {
-        if (n->getLeaf()) {
+        if (n->getLeaf()) { // linked list destructor will automatically be called
             delete(n);
         } else {
             for (int i = 0; i < MAX_CHILDREN - 1; i++) {
