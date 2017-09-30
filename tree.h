@@ -15,6 +15,7 @@ class Tree {
     Node* root;
     Node* leaf_head;
     void freeNode(Node* n);
+    float letterToGPA(string grade);
 public:
     Tree();
     ~Tree();
@@ -32,6 +33,8 @@ public:
     void insertMax(Node* x, int k);
     void insert(int k, string id, string name, string grade);
     void range(Node* x, int i, int k2);
+    float gpa(Node* x, int i);
+    float gpa(Node* x, int i, int k2);
 
     void preOrder(Node* n);
 };
@@ -58,6 +61,34 @@ void Tree::freeNode(Node* n) {
             delete n;
         }
     }
+}
+
+float Tree::letterToGPA(string grade) {
+    if (grade == "A") {
+        return 4.0;
+    } else if (grade == "A-") {
+        return 3.7;
+    } else if (grade == "B+") {
+        return 3.3;
+    } else if (grade == "B") {
+        return 3.0;
+    } else if (grade == "B-") {
+        return 2.7;
+    } else if (grade == "C+") {
+        return 2.3;
+    } else if (grade == "C") {
+        return 2.0;
+    } else if (grade == "C-") {
+        return 1.7;
+    } else if (grade == "D+") {
+        return 1.3;
+    } else if (grade == "D") {
+        return 1.0;
+    } else if (grade == "D-") {
+        return 0.7;
+    }
+
+    return 0.0;
 }
 
 void Tree::setRoot(Node* n){
@@ -111,10 +142,14 @@ tuple<Node*, int> Tree::search(Node* x, int k) { // return node pointer of the k
 }
 
 void Tree::insertRecord(Node *x, int pos, string id, string name, string grade) {
-    auto* l = new LinkedList;
-    l->createNode(id, name, grade);
     if (x->getLeaf()) {
-        x->setChild(l, pos);
+        if (x->getRecords(pos) != nullptr) {
+            x->getRecords(pos)->createNode(id, name, grade);
+        } else {
+            auto *l = new LinkedList;
+            l->createNode(id, name, grade);
+            x->setChild(l, pos);
+        }
     } else {
         cout << "Node is not a leaf node. Cannot insert record." << endl;
     }
@@ -142,13 +177,13 @@ void Tree::split(Node* x, int i) {
         y->setChild(z, 4); // make the smaller leaf node point to the larger leaf node
     }
 
-    for (j = x->getNumber()-1; j >= i+1; j--) { // check this
+    for (j = x->getNumber()-1; j >= i+1; j--) {
         x->setChild(x->getChild(j), j+1);
     }
     x->setChild(z, i+1);
     z->setParent(x);
 
-    for (j = x->getNumber() - 1; j > i; j--) {
+    for (j = x->getNumber() - 1; j >= i; j--) {
         x->setKey(x->getKey(j), j+1);
     }
 
@@ -164,6 +199,8 @@ void Tree::insertNonFull(Node* x, int k) {
     if (x->getLeaf()) {
         while(i >= 1 && k < x->getKey(i-1)) {
             x->setKey(x->getKey(i-1), i);
+            x->setChild(x->getRecords(i-1), i);
+            x->setChild(nullptr, i-1);
             i--;
         }
         x->setKey(k, i);
@@ -255,9 +292,61 @@ void Tree::range(Node* x, int i, int k2) {
         if (i <= x->getNumber() && k2 == x->getKey(i - 1)) {
             x->getRecords(i-1)->display();
         } else {
-            range(x->getChild(4), 0, k2);
+            range(x->getChild(4), 1, k2);
         }
     }
+}
+
+float Tree::gpa(Node* x, int i) {
+    if (x->getLeaf()) {
+        float total = 0.0, count = 0.0;
+        node* temp;
+        temp = x->getRecords(i)->getHead();
+        while(temp != nullptr) {
+            string g = temp->grade;
+            total += letterToGPA(g);
+            count += 1.0;
+            temp = temp->next;
+        }
+        return total/count;
+    }
+    return 5.0; // error value to return
+}
+
+float Tree::gpa(Node* x, int i, int k2) {
+    if (x->getLeaf()) {
+        node* temp;
+        float total = 0.0, count = 0.0;
+
+        while(i <= x->getNumber() && k2 > x->getKey(i-1)) {
+            if (x->getRecords(i-1) != nullptr) {
+                temp = x->getRecords(i-1)->getHead();
+                while(temp != nullptr) {
+                    string g = temp->grade;
+                    total += letterToGPA(g);
+                    count += 1.0;
+                    temp = temp->next;
+                }
+            }
+            i++;
+        }
+
+        if (i <= x->getNumber() && k2 == x->getKey(i - 1)) {
+            if (x->getRecords(i-1) != nullptr) {
+                temp = x->getRecords(i-1)->getHead();
+                while(temp != nullptr) {
+                    string g = temp->grade;
+                    total += letterToGPA(g);
+                    count += 1.0;
+                    temp = temp->next;
+                }
+            }
+        } else {
+            gpa(x->getChild(4), 0, k2);
+        }
+    }
+
+    return 5.0; // error value to return
 }
 
 void Tree::preOrder(Node *n) {

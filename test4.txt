@@ -1,0 +1,27 @@
+ins 7629841 COMP3506 Algorithms-Data-Structures B-
+ins 7708181 CSSE2002 Programming-in-the-Large B-
+ins 6044005 COMP3506 Algorithms-Data-Structures D
+ins 1669628 DECO2800 Design-Computing-Studio2-Testing-Evaluation A
+ins 9424798 DECO2800 Design-Computing-Studio2-Testing-Evaluation D
+ins 4433124 INFS2200 Relational-Database-Systems A
+ins 3780200 DECO2500 Human-Computer-Interaction C
+ins 9581166 CSSE2002 Programming-in-the-Large D
+ins 7683413 DECO2800 Design-Computing-Studio2-Testing-Evaluation A-
+ins 8687746 COMP3301 Operating-Systems-Architecture B-
+ins 9204639 CSSE3002 The-Software-Process D
+ins 4196586 COMP3301 Operating-Systems-Architecture D
+ins 6584618 COMS3000 Information-Security C
+ins 4229082 INFS3202 Web-Information-Systems B-
+ins 9387559 MATH1061 Discrete-Mathematics D
+ins 6098316 INFS3204 Service-Oriented-Architectures A-
+ins 5819979 COMP3506 Algorithms-Data-Structures C
+ins 5927710 INFS2200 Relational-Database-Systems D
+ins 5804419 CSSE2010 Introduction-to-Computer-Systems A
+ins 9293783 COMP3301 Operating-Systems-Architecture B
+ins 3464816 CSSE3100 Reasoning-About-Programs C-
+ins 1461263 CSSE1001 Introduction-to-Software-Engineering A
+ins 4443203 INFS3202 Web-Information-Systems A
+ins 4520644 INFS2200 Relational-Database-Systems A
+ins 4433895 INFS1200 Introduction-to-Information-Systems C-
+find 7629841
+find 7708181

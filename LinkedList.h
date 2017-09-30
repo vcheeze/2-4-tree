@@ -30,6 +30,7 @@ public:
     ~LinkedList();
 
     // methods
+    node* getHead();
     void createNode(string id, string name, string grade);
     void insert_start(string id, string name, string grade);
     void insert_pos(int pos, string id, string name, string grade);
@@ -54,6 +55,10 @@ LinkedList::~LinkedList() {
         curr = next;
     }
     head = nullptr;
+}
+
+node* LinkedList::getHead() {
+    return head;
 }
 
 void LinkedList::createNode(string id, string name, string grade) {

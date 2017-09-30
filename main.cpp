@@ -49,8 +49,8 @@ int main() {
             if (cmd[0] == "print" && cmd.size() == 1) { // print the contents of the tree in pre order
                 t.preOrder(t.getRoot());
             } else if (cmd[0] == "ins") {
-                t.insert(stoi(cmd[1]), cmd[2], cmd[3], cmd[4]);
                 cout << "Inserting " << cmd[1] << endl;
+                t.insert(stoi(cmd[1]), cmd[2], cmd[3], cmd[4]);
             } else if (cmd[0] == "load" && cmd.size() == 2) { // type the file name without the ".txt" extension
                 string line, path = "../";
                 path += cmd[1];
@@ -69,7 +69,18 @@ int main() {
                             t.preOrder(t.getRoot());
                             cout << endl;
                         } else if (bulk[0] == "ins") {
+                            cout << "Inserting " << bulk[1] << endl;
                             t.insert(stoi(bulk[1]), bulk[2], bulk[3], bulk[4]);
+                        } else if (bulk[0] == "find" && bulk.size() == 2) { // print out info of the student
+                            auto n = t.search(t.getRoot(), stoi(bulk[1]));
+                            cout << "Searching for records of student " << bulk[1] << "..." << endl;
+                            if (get<int>(n) == -1) {
+                                cout << "Record not found: " << bulk[1] << endl;
+                            } else {
+                                cout << "Record found: " << get<Node*>(n)->getKey(get<int>(n)) << endl;
+                                cout << "Course ID | Course Name | Grade" << endl;
+                                get<Node*>(n)->getRecords(get<int>(n))->display();
+                            }
                         } else {
                             cout << "Invalid command found in file" << endl;
                             break;
@@ -105,10 +116,32 @@ int main() {
                     t.range(n, i+1, stoi(cmd[2]));
                 }
             } else if (cmd[0] == "gpa") {
-                if (cmd[2].empty()) {
-                    cout << "GPA for " << cmd[1] << endl;
-                } else {
-                    cout << "GPA from " << cmd[1] << " to " << cmd[2] << endl;
+                if (cmd.size() == 2) {
+                    cout << "Average GPA for " << cmd[1] << endl;
+                    auto g = t.search(t.getRoot(), stoi(cmd[1]));
+                    Node *gNode = get<Node*>(g);
+                    int gi = get<int>(g);
+                    float average = t.gpa(gNode, gi);
+                    if (average != 5.0) {
+                        cout << average << endl;
+                    }
+                } else if (cmd.size() == 3) {
+                    cout << "Average GPA from " << cmd[1] << " to " << cmd[2] << endl;
+                    auto a = t.search(t.getRoot(), stoi(cmd[1]));
+                    auto b = t.search(t.getRoot(), stoi(cmd[2]));
+                    Node* n = get<Node*>(a);
+                    int i = get<int>(a);
+                    int j = get<int>(b);
+                    if (i == -1) { // can't find student 1
+                        cout << "Cannot find " << cmd[1] << endl;
+                    } else if (j == -1) {
+                        cout << "Cannot find " << cmd[2] << endl;
+                    } else {
+                        float average = t.gpa(n, i+1, stoi(cmd[2]));
+                        if (average != 5.0) {
+                            cout << average << endl;
+                        }
+                    }
                 }
             } else if (cmd[0] == "top") {
                 cout << "The " << cmd[1] << " most popular courses: " << endl;
