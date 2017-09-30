@@ -99,6 +99,12 @@ tuple<Node*, int> Tree::search(Node* x, int k) { // return node pointer of the k
         } else {
             return search(x->getChild(i-1), k);
         }
+    } else if (i <= x->getNumber() && k < x->getKey(i-1)) {
+        if (x->getLeaf()) {
+            return make_tuple(x, -1);
+        } else {
+            return search(x->getChild(i-1), k);
+        }
     }
 
     return make_tuple(x, -1);
@@ -127,11 +133,9 @@ void Tree::split(Node* x, int i) {
         y->setKey(0, j+t); // reset the keys of y to 0
     }
 
-    if (!y->getLeaf()) {
-        for (j = 0; j < t; j++) {
-            z->setChild(y->getChild(j+t), j);
-            y->setChild(nullptr, j + t); // reset the pointers of y to null
-        }
+    for (j = 0; j < t; j++) {
+        z->setChild(y->getChild(j+t), j);
+        y->setChild(nullptr, j+t); // reset the pointers of y to null
     }
     y->setNumber(t);
     if (y->getLeaf()) {
