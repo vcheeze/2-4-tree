@@ -8,6 +8,7 @@
 
 #include "Node.h"
 #include "LinkedList.h"
+#include "MaxHeap.h"
 using namespace std;
 
 
@@ -35,6 +36,8 @@ public:
     void range(Node* x, int i, int k2);
     float gpa(Node* x, int i);
     float gpa(Node* x, int i, int k2);
+    vector<string> getAllCourses(Node* x, vector<string> courses);
+    string top(int n);
 
     void preOrder(Node* n);
 };
@@ -243,7 +246,7 @@ void Tree::insert(int k, string id, string name, string grade) {
     auto x = search(root, k);
     if (get<int>(x) != -1) { // if the node with key k is found
         insertRecord(get<Node*>(x), get<int>(x), id, name, grade);
-//        setLeafNode(root);
+        setLeafNode(root);
         return;
     }
 
@@ -278,7 +281,7 @@ void Tree::insert(int k, string id, string name, string grade) {
         }
     }
 
-    // setLeafNode(root); // set the first node on the leaf level
+    setLeafNode(root); // set the first node on the leaf level
 }
 
 void Tree::range(Node* x, int i, int k2) {
@@ -348,6 +351,38 @@ float Tree::gpa(Node* x, int i, int k2) {
     }
 
     return 5.0; // error value to return
+}
+
+vector<string> Tree::getAllCourses(Node* x, vector<string> courses) {
+    if (x && x->getLeaf()) {
+        int i = 1;
+        auto *temp = new node;
+
+        while(i <= x->getNumber() && x->getKey(i-1) != 0) {
+            if (x->getRecords(i-1) != nullptr) {
+                temp = x->getRecords(i-1)->getHead();
+                while(temp != nullptr) {
+                    string id = temp->courseID;
+                    if (!(find(courses.begin(), courses.end(), id) != courses.end())) {
+                        // push the course to the end of the vector if it is not already present
+                        courses.push_back(id);
+                    }
+                    temp = temp->next;
+                }
+            }
+            i++;
+        }
+        return getAllCourses(x->getChild(4), courses);
+    }
+    return courses;
+}
+
+string Tree::top(int n) { // get the top n courses
+    vector<string> c {""};
+    c = getAllCourses(leaf_head, c);
+    c.erase(c.begin());
+    FrequencyCounter fc;
+    return fc.findNthMostFrequentCourse(c, n);
 }
 
 void Tree::preOrder(Node *n) {

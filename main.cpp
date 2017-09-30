@@ -112,7 +112,7 @@ int main() {
                 } else if (j == -1) {
                     cout << "Cannot find " << cmd[2] << endl;
                 } else {
-                    cout << "Course ID | Course Name | Grade" << endl;
+                    cout << "CourseID | Course Name | Grade" << endl;
                     t.range(n, i+1, stoi(cmd[2]));
                 }
             } else if (cmd[0] == "gpa") {
@@ -145,6 +145,7 @@ int main() {
                 }
             } else if (cmd[0] == "top") {
                 cout << "The " << cmd[1] << " most popular courses: " << endl;
+                cout << t.top(stoi(cmd[1])) << endl;
             } else if (cmd[0] == "verify") {
                 cout << "Verification result: " << endl;
             } else if (cmd[0] == "del") {

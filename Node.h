@@ -42,18 +42,14 @@ public:
     void printKeys();
 };
 
-Node::Node() {
-    puts("Node default constructor");
-}
+Node::Node() = default;
 
 Node::Node(const bool leaf)
 : leaf(leaf) {
     puts("Leaf constructor");
 }
 
-Node::~Node() {
-    printf("Destructor ");
-}
+Node::~Node() = default;
 
 void Node::setParent(Node* p) {
     parent = p;
