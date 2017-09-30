@@ -93,7 +93,7 @@ int main() {
                 cout << "Range from " << cmd[1] << " to " << cmd[2] << endl;
                 auto a = t.search(t.getRoot(), stoi(cmd[1]));
                 auto b = t.search(t.getRoot(), stoi(cmd[2]));
-                Node* n1 = get<Node*>(a);
+                Node* n = get<Node*>(a);
                 int i = get<int>(a);
                 int j = get<int>(b);
                 if (i == -1) { // can't find k1
@@ -101,7 +101,8 @@ int main() {
                 } else if (j == -1) {
                     cout << "Cannot find " << cmd[2] << endl;
                 } else {
-                    t.range(n1, i, stoi(cmd[2]));
+                    cout << "Course ID | Course Name | Grade" << endl;
+                    t.range(n, i+1, stoi(cmd[2]));
                 }
             } else if (cmd[0] == "gpa") {
                 if (cmd[2].empty()) {

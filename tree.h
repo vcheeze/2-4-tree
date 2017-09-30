@@ -244,10 +244,10 @@ void Tree::insert(int k, string id, string name, string grade) {
 }
 
 void Tree::range(Node* x, int i, int k2) {
-    if (x->getLeaf()) { // only traverse if n1 is a leaf node
+    if (x->getLeaf()) { // only traverse if x is a leaf node
         while (i <= x->getNumber() && k2 > x->getKey(i - 1)) {
-            if (x->getChild(i - 1) != nullptr) {
-                x->getRecords(i - 1)->display();
+            if (x->getRecords(i-1) != nullptr) {
+                x->getRecords(i-1)->display();
             }
             i++;
         }
