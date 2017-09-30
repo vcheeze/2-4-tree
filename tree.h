@@ -24,13 +24,14 @@ public:
     void setLeafHead(Node *n);
     Node* getLeafHead();
 
+    void setLeafNode(Node* x);
     tuple<Node*, int> search(Node* x, int k);
     void insertRecord(Node* x, int pos, string id, string name, string grade);
     void split(Node* x, int i);
     void insertNonFull(Node* x, int k);
     void insertMax(Node* x, int k);
     void insert(int k, string id, string name, string grade);
-    void range(int k1, int k2);
+    void range(Node* x, int i, int k2);
 
     void preOrder(Node* n);
 };
@@ -59,10 +60,6 @@ void Tree::freeNode(Node* n) {
     }
 }
 
-void Tree::range(int k1, int k2) {
-
-}
-
 void Tree::setRoot(Node* n){
     root = n;
 }
@@ -77,6 +74,16 @@ void Tree::setLeafHead(Node *n) {
 
 Node* Tree::getLeafHead() {
     return leaf_head;
+}
+
+void Tree::setLeafNode(Node* x) {
+    if (x->getLeaf()) {
+        leaf_head = x;
+    } else {
+        if (x->getChild(0) != nullptr) {
+            setLeafNode(x->getChild(0));
+        }
+    }
 }
 
 tuple<Node*, int> Tree::search(Node* x, int k) { // return node pointer of the key found
@@ -95,19 +102,13 @@ tuple<Node*, int> Tree::search(Node* x, int k) { // return node pointer of the k
     }
 
     return make_tuple(x, -1);
-
-/*    if (x->getLeaf()) {
-        return nullptr;
-    } else {
-        return search(x->getChild(i-1), k);
-    }*/
 }
 
 void Tree::insertRecord(Node *x, int pos, string id, string name, string grade) {
     auto* l = new LinkedList;
     l->createNode(id, name, grade);
     if (x->getLeaf()) {
-        x->setChild(l, 0);
+        x->setChild(l, pos);
     } else {
         cout << "Node is not a leaf node. Cannot insert record." << endl;
     }
@@ -129,7 +130,7 @@ void Tree::split(Node* x, int i) {
     if (!y->getLeaf()) {
         for (j = 0; j < t; j++) {
             z->setChild(y->getChild(j+t), j);
-            y->setChild(nullptr, j+t); // reset the pointers of y to null
+            y->setChild(nullptr, j + t); // reset the pointers of y to null
         }
     }
     y->setNumber(t);
@@ -200,6 +201,7 @@ void Tree::insert(int k, string id, string name, string grade) {
     auto x = search(root, k);
     if (get<int>(x) != -1) { // if the node with key k is found
         insertRecord(get<Node*>(x), get<int>(x), id, name, grade);
+//        setLeafNode(root);
         return;
     }
 
@@ -221,7 +223,6 @@ void Tree::insert(int k, string id, string name, string grade) {
         auto y = search(root, k);
         if (get<int>(y) != -1) { // if the node with key k is found
             insertRecord(get<Node*>(y), get<int>(y), id, name, grade);
-            return;
         }
     } else {
         if (k > root->getKey(i-1)) {
@@ -232,7 +233,25 @@ void Tree::insert(int k, string id, string name, string grade) {
         auto z = search(root, k);
         if (get<int>(z) != -1) { // if the node with key k is found
             insertRecord(get<Node*>(z), get<int>(z), id, name, grade);
-            return;
+        }
+    }
+
+    // setLeafNode(root); // set the first node on the leaf level
+}
+
+void Tree::range(Node* x, int i, int k2) {
+    if (x->getLeaf()) { // only traverse if n1 is a leaf node
+        while (i <= x->getNumber() && k2 > x->getKey(i - 1)) {
+            if (x->getChild(i - 1) != nullptr) {
+                x->getRecords(i - 1)->display();
+            }
+            i++;
+        }
+
+        if (i <= x->getNumber() && k2 == x->getKey(i - 1)) {
+            x->getRecords(i-1)->display();
+        } else {
+            range(x->getChild(4), 0, k2);
         }
     }
 }

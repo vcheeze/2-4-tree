@@ -1,0 +1,10 @@
+ins 1000 ID1000 N1000 A
+print
+ins 1001 ID1001 N1001 B
+print
+ins 1002 ID1002 N1002 C
+print
+ins 1003 ID1003 N1003 D
+print
+ins 1004 ID1004 N1004 F
+print

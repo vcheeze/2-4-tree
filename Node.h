@@ -52,7 +52,7 @@ Node::Node(const bool leaf)
 }
 
 Node::~Node() {
-    printf("Destructor");
+    printf("Destructor ");
 }
 
 void Node::setParent(Node* p) {

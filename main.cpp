@@ -86,10 +86,23 @@ int main() {
                     cout << "Record not found: " << cmd[1] << endl;
                 } else {
                     cout << "Record found: " << get<Node*>(n)->getKey(get<int>(n)) << endl;
+                    cout << "Course ID | Course Name | Grade" << endl;
                     get<Node*>(n)->getRecords(get<int>(n))->display();
                 }
             } else if (cmd[0] == "range" && cmd.size() == 3) {
                 cout << "Range from " << cmd[1] << " to " << cmd[2] << endl;
+                auto a = t.search(t.getRoot(), stoi(cmd[1]));
+                auto b = t.search(t.getRoot(), stoi(cmd[2]));
+                Node* n1 = get<Node*>(a);
+                int i = get<int>(a);
+                int j = get<int>(b);
+                if (i == -1) { // can't find k1
+                    cout << "Cannot find " << cmd[1] << endl;
+                } else if (j == -1) {
+                    cout << "Cannot find " << cmd[2] << endl;
+                } else {
+                    t.range(n1, i, stoi(cmd[2]));
+                }
             } else if (cmd[0] == "gpa") {
                 if (cmd[2].empty()) {
                     cout << "GPA for " << cmd[1] << endl;
