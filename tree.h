@@ -172,6 +172,7 @@ void Tree::split(Node* x, int i) {
         z->setChild(y->getChild(j+t), j);
         y->setChild(nullptr, j+t); // reset the pointers of y to null
     }
+    z->setChild(y->getChild(4), 4);
     y->setNumber(t);
     if (y->getLeaf()) {
         y->setChild(z, 4); // make the smaller leaf node point to the larger leaf node
@@ -226,7 +227,7 @@ void Tree::insertMax(Node* x, int k) {
 
     if (x->getLeaf()) {
         x->setKey(k, i);
-        x->setNumber(x->getNumber() + 1);
+        x->setNumber(x->getNumber()+1);
     } else {
         x->setKey(k, i-1);
         if (x->getChild(i-1)->getNumber() == 4) {

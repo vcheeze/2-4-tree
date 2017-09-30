@@ -1,0 +1,285 @@
+init
+ins 4609804 INFS3200 Advanced-Database-Systems C-
+ins 9424251 CSSE3002 The-Software-Process C-
+ins 9980178 COMS3000 Information-Security B
+ins 2377638 INFS1200 Introduction-to-Information Systems D
+ins 1398454 DECO2500 Human-Computer-Interaction C-
+ins 5356075 INFS1200 Introduction-to-Information Systems C
+ins 7809093 DECO3801 Design-Computing-Studio-Build D
+ins 5814644 INFS3202 Web-Information-Systems B
+ins 2003679 DECO3500 Social-Mobile-Computing A-
+ins 1675168 CSSE1001 Introduction-to-Software Engineering A-
+ins 8465108 DECO3801 Design-Computing-Studio-Build D
+ins 7424544 COMS3000 Information-Security B
+ins 1671645 CSSE3002 The-Software-Process A-
+ins 5446587 DECO3500 Social-Mobile-Computing C
+ins 8794801 COMP3506 Algorithms-Data-Structures C
+ins 6457370 COMP3702 Artificial-Intelligence A
+ins 8298194 CSSE1001 Introduction-to-Software Engineering A
+ins 8880813 CSSE3002 The-Software-Process A-
+ins 7117576 CSSE2002 Programming-in-the-Large C-
+ins 7613806 DECO3801 Design-Computing-Studio-Build D
+ins 3891556 CSSE2310 Computer-Systems-Principles-and-Programming B
+ins 1711586 COMP3506 Algorithms-Data-Structures C
+ins 2653334 CSSE3100 Reasoning-About-Programs C
+ins 4468668 INFS1200 Introduction-to-Information Systems A-
+ins 3105409 COMS3200 Computer-Networks C
+ins 5851133 INFS3200 Advanced-Database-Systems D
+ins 1322823 MATH1061 Discrete-Mathematics B-
+ins 2845357 COMS3000 Information-Security B-
+ins 9063070 DECO3801 Design-Computing-Studio-Build A-
+ins 7570396 CSSE3002 The-Software-Process C-
+ins 4854688 MATH1061 Discrete-Mathematics A
+ins 3294874 COSC3500 High-Performance-Computing C
+ins 2055806 DECO2500 Human-Computer-Interaction B
+ins 7945179 INFS3204 Service-Oriented-Architectures D
+ins 5295125 COMP3301 Operating-Systems-Architecture D
+ins 3439899 CSSE2002 Programming-in-the-Large C
+ins 3290701 COMS3000 Information-Security C
+ins 8124026 CSSE2010 Introduction-to-Computer Systems B
+ins 7091302 CSSE2310 Computer-Systems-Principles-and-Programming A
+ins 7399310 DECO2800 Design-Computing-Studio2-Testing-Evaluation C
+ins 9572646 COMP3301 Operating-Systems-Architecture C
+ins 5339238 COMP3301 Operating-Systems-Architecture C-
+ins 9165539 COMP3301 Operating-Systems-Architecture A
+ins 6665019 INFS2200 Relational-Database-Systems C-
+ins 7586302 CSSE1001 Introduction-to-Software Engineering C-
+ins 5037697 DECO2500 Human-Computer-Interaction C
+ins 9636121 COMS3000 Information-Security A-
+ins 6976777 CSSE1001 Introduction-to-Software Engineering A
+ins 7338941 DECO2500 Human-Computer-Interaction A
+ins 8675677 INFS2200 Relational-Database-Systems C
+ins 2847349 COSC3500 High-Performance-Computing B-
+ins 7759268 INFS3202 Web-Information-Systems D
+ins 2909824 COMP3702 Artificial-Intelligence B-
+ins 6668668 INFS3204 Service-Oriented-Architectures B
+ins 6513478 INFS3200 Advanced-Database-Systems B-
+ins 8138366 COSC3000 Visualization-Computer-Graphics-Data Analysis C-
+ins 5025762 CSSE2010 Introduction-to-Computer Systems A
+ins 4047551 DECO2800 Design-Computing-Studio2-Testing-Evaluation D
+ins 9070222 DECO3500 Social-Mobile-Computing B-
+ins 3445362 COMS3000 Information-Security B
+ins 1579208 COMS3000 Information-Security B-
+ins 8094242 CSSE3100 Reasoning-About-Programs B-
+ins 7654161 CSSE2310 Computer-Systems-Principles-and-Programming B-
+ins 2250045 COMP3506 Algorithms-Data-Structures D
+ins 4491184 MATH1061 Discrete-Mathematics A
+ins 2574996 COMP3702 Artificial-Intelligence A-
+ins 5240439 INFS3200 Advanced-Database-Systems A
+ins 7891165 DECO3801 Design-Computing-Studio-Build A-
+ins 9346602 CSSE1001 Introduction-to-Software Engineering A-
+ins 5272444 DECO2500 Human-Computer-Interaction C
+ins 5515648 DECO2800 Design-Computing-Studio2-Testing-Evaluation A-
+ins 9845183 INFS3202 Web-Information-Systems A
+ins 6411463 DECO2800 Design-Computing-Studio2-Testing-Evaluation B
+ins 4599747 COMP3506 Algorithms-Data-Structures B
+ins 2439236 COSC3000 Visualization-Computer-Graphics-Data Analysis D
+ins 1875969 DECO3500 Social-Mobile-Computing B
+ins 2943700 COSC3500 High-Performance-Computing C-
+ins 7683602 INFS3204 Service-Oriented-Architectures C
+ins 4753619 COSC3500 High-Performance-Computing A-
+ins 6780414 COMS3000 Information-Security A-
+ins 7470600 DECO3801 Design-Computing-Studio-Build A
+ins 5762076 CSSE2010 Introduction-to-Computer Systems B
+ins 2197762 INFS3200 Advanced-Database-Systems C
+ins 6561586 DECO3500 Social-Mobile-Computing C
+ins 6352743 CSSE3002 The-Software-Process A-
+ins 4166219 DECO2800 Design-Computing-Studio2-Testing-Evaluation A
+ins 6514329 INFS3200 Advanced-Database-Systems C-
+ins 2551271 DECO2800 Design-Computing-Studio2-Testing-Evaluation D
+ins 4736568 INFS3204 Service-Oriented-Architectures C
+ins 5991941 COMP3506 Algorithms-Data-Structures D
+ins 3773827 INFS3200 Advanced-Database-Systems B
+ins 6249685 DECO3801 Design-Computing-Studio-Build B
+ins 6424918 CSSE3100 Reasoning-About-Programs A
+ins 6217939 COMS3200 Computer-Networks C-
+ins 5728758 CSSE1001 Introduction-to-Software Engineering C-
+ins 5260582 CSSE3100 Reasoning-About-Programs A
+ins 3767617 INFS3202 Web-Information-Systems B
+ins 1681898 DECO3500 Social-Mobile-Computing C-
+ins 3325193 CSSE2002 Programming-in-the-Large C
+ins 7700572 CSSE3002 The-Software-Process C-
+ins 8883451 DECO2500 Human-Computer-Interaction C-
+ins 7804756 MATH1061 Discrete-Mathematics A
+ins 4933106 COMP3506 Algorithms-Data-Structures D
+ins 8232247 INFS3202 Web-Information-Systems A
+ins 5921931 INFS3202 Web-Information-Systems B-
+ins 7043949 DECO3801 Design-Computing-Studio-Build D
+ins 6398188 COMP3506 Algorithms-Data-Structures C-
+ins 2017824 CSSE3100 Reasoning-About-Programs D
+ins 7922601 COMP3301 Operating-Systems-Architecture B
+ins 8721727 INFS2200 Relational-Database-Systems A-
+ins 7958285 INFS2200 Relational-Database-Systems C
+ins 9768626 CSSE3100 Reasoning-About-Programs B
+ins 6131790 CSSE2002 Programming-in-the-Large C
+ins 2885681 DECO3801 Design-Computing-Studio-Build D
+ins 5040439 INFS3202 Web-Information-Systems C-
+ins 7451411 COMP3702 Artificial-Intelligence C
+ins 3705761 DECO2500 Human-Computer-Interaction B
+ins 1360157 INFS3200 Advanced-Database-Systems D
+ins 4004520 INFS3200 Advanced-Database-Systems B
+ins 5299874 DECO2500 Human-Computer-Interaction A-
+ins 3888478 INFS1200 Introduction-to-Information Systems B
+ins 9823315 CSSE3002 The-Software-Process D
+ins 2774298 COMS3200 Computer-Networks B-
+ins 1316678 COMP3506 Algorithms-Data-Structures C
+ins 9107344 COSC3000 Visualization-Computer-Graphics-Data Analysis B
+ins 3652010 DECO2500 Human-Computer-Interaction B-
+ins 5320300 COSC3500 High-Performance-Computing C
+ins 4471824 INFS3202 Web-Information-Systems B
+ins 9865903 DECO3500 Social-Mobile-Computing C
+ins 1400841 COSC3000 Visualization-Computer-Graphics-Data Analysis A-
+ins 2897524 CSSE3100 Reasoning-About-Programs A-
+ins 2501291 CSSE1001 Introduction-to-Software Engineering D
+ins 4897002 DECO2800 Design-Computing-Studio2-Testing-Evaluation A-
+ins 4780310 COSC3500 High-Performance-Computing C
+ins 5844263 CSSE2310 Computer-Systems-Principles-and-Programming C-
+ins 1911962 INFS2200 Relational-Database-Systems C-
+ins 1264381 COMS3000 Information-Security C-
+ins 1354960 COMS3000 Information-Security B-
+ins 6591474 MATH1061 Discrete-Mathematics A
+ins 6560463 CSSE2010 Introduction-to-Computer Systems A
+ins 8614183 COMS3200 Computer-Networks B-
+ins 5709338 CSSE3100 Reasoning-About-Programs A-
+ins 2958147 DECO3500 Social-Mobile-Computing B-
+ins 7644790 CSSE2010 Introduction-to-Computer Systems B
+ins 7685217 CSSE2002 Programming-in-the-Large B
+ins 4412827 DECO3801 Design-Computing-Studio-Build D
+ins 1774914 DECO3801 Design-Computing-Studio-Build B
+ins 7107900 CSSE2010 Introduction-to-Computer Systems B
+ins 9556247 CSSE3002 The-Software-Process B
+ins 5518636 CSSE2002 Programming-in-the-Large C-
+ins 4338903 INFS1200 Introduction-to-Information Systems C
+ins 1483458 COSC3500 High-Performance-Computing C
+ins 9446849 INFS1200 Introduction-to-Information Systems A
+ins 3092825 INFS1200 Introduction-to-Information Systems B
+ins 8388891 CSSE2002 Programming-in-the-Large D
+ins 7584279 CSSE1001 Introduction-to-Software Engineering D
+ins 3532780 CSSE2310 Computer-Systems-Principles-and-Programming B-
+ins 7726380 COSC3500 High-Performance-Computing D
+ins 1496513 COSC3000 Visualization-Computer-Graphics-Data Analysis B-
+ins 6424708 DECO2500 Human-Computer-Interaction A
+ins 5344124 CSSE2002 Programming-in-the-Large D
+ins 2124356 COMS3000 Information-Security C
+ins 7006608 COSC3000 Visualization-Computer-Graphics-Data Analysis A
+ins 2951047 CSSE2002 Programming-in-the-Large C-
+ins 8396772 DECO3500 Social-Mobile-Computing B
+ins 3328046 CSSE1001 Introduction-to-Software Engineering A
+ins 1307074 COMS3000 Information-Security D
+ins 8752650 INFS3200 Advanced-Database-Systems C
+ins 4092471 CSSE3002 The-Software-Process B-
+ins 3372203 INFS3202 Web-Information-Systems A-
+ins 2841544 COMS3000 Information-Security B
+ins 3282965 COMP3301 Operating-Systems-Architecture B
+ins 8247419 COSC3000 Visualization-Computer-Graphics-Data Analysis C-
+ins 5601558 CSSE3002 The-Software-Process C-
+ins 2206099 DECO3801 Design-Computing-Studio-Build C
+ins 7117868 CSSE2010 Introduction-to-Computer Systems A-
+ins 4346859 COMS3000 Information-Security A
+ins 6410620 INFS3202 Web-Information-Systems C-
+ins 4411880 COMS3200 Computer-Networks D
+ins 3579705 COMP3702 Artificial-Intelligence B-
+ins 5824578 INFS1200 Introduction-to-Information Systems A
+ins 7921107 CSSE2002 Programming-in-the-Large C-
+ins 1182221 COMS3000 Information-Security A-
+ins 5708714 INFS3202 Web-Information-Systems D
+ins 7267827 DECO2800 Design-Computing-Studio2-Testing-Evaluation B-
+ins 1915419 CSSE2310 Computer-Systems-Principles-and-Programming A
+ins 9279018 CSSE2010 Introduction-to-Computer Systems A-
+ins 8741460 INFS3204 Service-Oriented-Architectures B
+ins 8646645 CSSE2310 Computer-Systems-Principles-and-Programming B-
+ins 1514459 MATH1061 Discrete-Mathematics B
+ins 3668183 COSC3000 Visualization-Computer-Graphics-Data Analysis D
+ins 8800298 MATH1061 Discrete-Mathematics C-
+ins 4206333 COSC3500 High-Performance-Computing C-
+ins 8481363 CSSE3100 Reasoning-About-Programs B
+ins 7337712 COMP3506 Algorithms-Data-Structures A
+ins 1268179 CSSE3100 Reasoning-About-Programs C-
+ins 4273728 CSSE2002 Programming-in-the-Large A
+ins 5315467 COMP3301 Operating-Systems-Architecture C-
+ins 4547114 COMS3000 Information-Security B-
+ins 8167301 INFS3202 Web-Information-Systems A
+find 3290701
+find 8247419
+find 9866809
+find 9778070
+top 3
+top 6
+top 4
+top 10
+top 5
+top 3
+verify
+verify
+del 1774914 INFS3202
+del 130416 COMP3506
+del 133166 DECO2800
+range 106980 994478
+range 114927 4184278
+range 137677 8648858
+range 111763 8354909
+find 4166219
+find 5037697
+find 8782297
+find 8647917
+verify
+del 5339238 DECO3801
+del 117092 INFS3202
+del 139732 COSC3500
+verify
+verify
+verify
+del 9424251 INFS1200
+del 121458 COMP3506
+del 138428 INFS3204
+top 8
+top 7
+top 5
+sdel 7685217
+sdel 5474431
+sdel 3891556
+sdel 9036346
+range 110325 8376111
+range 137232 4125915
+range 111549 9036958
+range 103824 2577279
+sdel 4547114
+sdel 6284009
+sdel 8298194
+sdel 1566541
+gpa 5518636 5715548
+gpa 2617644 8131106
+range 145790 7342024
+range 145713 7305697
+range 115785 5561387
+range 105238 3235141
+topk 5
+topk 7
+topk 9
+sdel 4753619
+sdel 4433967
+sdel 5762076
+sdel 3316285
+gpa 6780414 7764421
+gpa 3739027 8302134
+gpa 9636121 9884720
+gpa 8563537 9739008
+range 112592 3576033
+range 136177 5101440
+range 128455 6508253
+range 131568 3976529
+verify
+del 4166219 COMS3000
+del 123329 CSSE3100
+del 103179 CSSE2010
+top 10
+top 4
+top 10
+sdel 7424544
+sdel 2311053
+sdel 8396772
+sdel 6244479
+del 1911962 DECO2500
+del 108688 COMP3506
+del 106480 CSSE2002
+exit

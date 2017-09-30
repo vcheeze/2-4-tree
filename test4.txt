@@ -23,5 +23,11 @@ ins 1461263 CSSE1001 Introduction-to-Software-Engineering A
 ins 4443203 INFS3202 Web-Information-Systems A
 ins 4520644 INFS2200 Relational-Database-Systems A
 ins 4433895 INFS1200 Introduction-to-Information-Systems C-
+ins 7167154 INFS1200 Introduction-to-Information-Systems C-
+ins 4073970 INFS2200 Relational-Database-Systems B
+ins 2598861 INFS3202 Web-Information-Systems A-
+ins 4150714 COMS3000 Information-Security A
+ins 9376286 INFS1200 Introduction-to-Information Systems A
+ins 6948642 CSSE3100 Reasoning-About-Programs A
 find 7629841
 find 7708181
