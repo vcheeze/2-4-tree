@@ -1,3 +1,6 @@
+// allow configuration file
+// clean up student_record files into folder
+
 #include <iostream>
 #include <sstream>
 #include <vector>
@@ -52,7 +55,7 @@ int main() {
                 cout << "Inserting " << cmd[1] << endl;
                 t.insert(stoi(cmd[1]), cmd[2], cmd[3], cmd[4]);
             } else if (cmd[0] == "load" && cmd.size() == 2) { // type the file name without the ".txt" extension
-                string line, path = "../";
+                string line, path = "../sample_input";
                 path += cmd[1];
                 path += ".txt";
                 ifstream inputFile;
