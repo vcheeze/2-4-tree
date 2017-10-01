@@ -17,6 +17,8 @@ class Tree {
     Node* leaf_head;
     void freeNode(Node* n);
     float letterToGPA(string grade);
+    bool checkNodeNumber(Node* x);
+    bool checkKeys(Node* x);
 public:
     Tree();
     ~Tree();
@@ -38,6 +40,7 @@ public:
     float gpa(Node* x, int i, int k2);
     vector<string> getAllCourses(Node* x, vector<string> courses);
     string top(int n);
+    bool verify(Node* n);
 
     void preOrder(Node* n);
 };
@@ -92,6 +95,32 @@ float Tree::letterToGPA(string grade) {
     }
 
     return 0.0;
+}
+
+bool Tree::checkNodeNumber(Node* x) {
+    if (x == root) {
+        if (x->getNumber() >= 0 && x->getNumber() <= 4) {
+            return true;
+        }
+    } else {
+        if (x->getNumber() >= 2 && x->getNumber() <= 4) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Tree::checkKeys(Node *x) {
+    int i = 0, count = 0;
+    while(x->getKey(i) != 0 && x->getKey(i+1) != 0) {
+        if (x->getKey(i+1) > x->getKey(i)) {
+            count++;
+        }
+    }
+    if (count == x->getNumber()-1) {
+        return true;
+    }
+    return false;
 }
 
 void Tree::setRoot(Node* n){
@@ -385,8 +414,34 @@ string Tree::top(int n) { // get the top n courses
     return fc.findNthMostFrequentCourse(c, n);
 }
 
+bool Tree::verify(Node* n) {
+    if (n == root && n->getLeaf()) {
+        if (!checkNodeNumber(n) && checkKeys(n)) {
+            return false;
+        }
+    }
+
+    if (n->getLeaf()) {
+        if (!checkNodeNumber(n) && checkKeys(n)) {
+            return false;
+        }
+    } else {
+        if (!checkNodeNumber(n) && checkKeys(n)) {
+            return false;
+        } else {
+            for (int i = 0; i < MAX_CHILDREN - 1; i++) {
+                if (n->getChild(i) != nullptr) {
+                    verify(n->getChild(i));
+                }
+            }
+            return true;
+        }
+    }
+    return true;
+}
+
 void Tree::preOrder(Node *n) {
-    if (n) {
+    if (n != nullptr) {
         if (n->getLeaf()) { // if n is a leaf node, do not print the children
             n->printKeys();
         } else {

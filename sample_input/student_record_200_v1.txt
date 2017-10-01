@@ -1,3 +1,4 @@
+init
 ins 7629841 COMP3506 Algorithms-Data-Structures B-
 ins 7708181 CSSE2002 Programming-in-the-Large B-
 ins 6044005 COMP3506 Algorithms-Data-Structures D

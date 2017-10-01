@@ -1,5 +1,5 @@
 // allow configuration file
-// clean up student_record files into folder
+// implement verify
 
 #include <iostream>
 #include <sstream>
@@ -11,22 +11,52 @@ using namespace std;
 
 
 
-int main() {
-    cout << "> ";
+int main(int argc, char*argv[]) {
+//    cout << argc << endl;
+//    cout << argv[0] << endl << argv[1] << endl << argv[2] << endl;
     Tree t;
+    ifstream inputFile;
+    string line;
     bool initialized = false;
 
-    while(true) {
-        // get the input
-        string input;
-        getline(cin, input);
+    if (argc == 3 && strcmp(argv[1], "-c") == 0) {
+        string path = "../sample_input/";
+        path += argv[2];
+        path += ".txt";
+        inputFile.open(path);
+        if (inputFile.is_open()) {
+            cout << "Opened config file" << endl;
+        } else {
+            cout << "Failed to open config file" << endl;
+        }
+    }
 
-        // parse the input
-        istringstream iss(input);
+    cout << "> ";
+
+    while(true) {
         vector<string> cmd;
-        copy(istream_iterator<string>(iss),
-             istream_iterator<string>(),
-             back_inserter(cmd));
+        if (inputFile.is_open()) {
+            if (!getline(inputFile, line)) {
+                inputFile.close();
+            }
+            // parse each line
+            istringstream iss(line);
+            copy(istream_iterator<string>(iss),
+                 istream_iterator<string>(),
+                 back_inserter(cmd));
+        } else {
+            // get the input
+            string input;
+            getline(cin, input);
+
+            // parse the input
+            istringstream iss(input);
+            copy(istream_iterator<string>(iss),
+                 istream_iterator<string>(),
+                 back_inserter(cmd));
+        }
+
+        cout << cmd[0] << endl;
 
         if (cmd[0] != "init"
             && cmd[0] != "exit"
@@ -55,7 +85,7 @@ int main() {
                 cout << "Inserting " << cmd[1] << endl;
                 t.insert(stoi(cmd[1]), cmd[2], cmd[3], cmd[4]);
             } else if (cmd[0] == "load" && cmd.size() == 2) { // type the file name without the ".txt" extension
-                string line, path = "../sample_input";
+                string line, path = "../sample_input/";
                 path += cmd[1];
                 path += ".txt";
                 ifstream inputFile;
@@ -68,22 +98,9 @@ int main() {
                         copy(istream_iterator<string>(iss2),
                              istream_iterator<string>(),
                              back_inserter(bulk));
-                        if (bulk[0] == "print") {
-                            t.preOrder(t.getRoot());
-                            cout << endl;
-                        } else if (bulk[0] == "ins") {
+                       if (bulk[0] == "ins") {
                             cout << "Inserting " << bulk[1] << endl;
                             t.insert(stoi(bulk[1]), bulk[2], bulk[3], bulk[4]);
-                        } else if (bulk[0] == "find" && bulk.size() == 2) { // print out info of the student
-                            auto n = t.search(t.getRoot(), stoi(bulk[1]));
-                            cout << "Searching for records of student " << bulk[1] << "..." << endl;
-                            if (get<int>(n) == -1) {
-                                cout << "Record not found: " << bulk[1] << endl;
-                            } else {
-                                cout << "Record found: " << get<Node*>(n)->getKey(get<int>(n)) << endl;
-                                cout << "Course ID | Course Name | Grade" << endl;
-                                get<Node*>(n)->getRecords(get<int>(n))->display();
-                            }
                         } else {
                             cout << "Invalid command found in file" << endl;
                             break;
@@ -150,7 +167,12 @@ int main() {
                 cout << "The " << cmd[1] << " most popular courses: " << endl;
                 cout << t.top(stoi(cmd[1])) << endl;
             } else if (cmd[0] == "verify") {
-                cout << "Verification result: " << endl;
+                bool result = t.verify(t.getRoot());
+                if (result) {
+                    cout << "Verification result: true" << endl;
+                } else {
+                    cout << "Verification result: false" << endl;
+                }
             } else if (cmd[0] == "del") {
                 cout << "Deleting course " << cmd[2] << " from student " << cmd[1] << endl;
                 auto d = t.search(t.getRoot(), stoi(cmd[1]));
