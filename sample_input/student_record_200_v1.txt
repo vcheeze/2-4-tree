@@ -199,7 +199,6 @@ ins 4766801 DECO3500 Social-Mobile-Computing B
 ins 2409965 COMP3702 Artificial-Intelligence B
 ins 9013203 DECO3801 Design-Computing-Studio-Build D
 ins 4076002 INFS3204 Service-Oriented-Architectures A
-range 137279 6743274
 range 116097 536023
 range 146328 9816772
 range 124601 6153002
@@ -289,4 +288,5 @@ sdel 9252693
 sdel 6509430
 sdel 1689615
 sdel 6777113
+range 2409965 4076002
 exit
