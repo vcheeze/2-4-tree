@@ -2,6 +2,9 @@
 Operating Systems Project 1 in C++14
 
 ## How to run
+Run `make` to compile the files. This will allow you to enter a small shell, in
+which you can execute the following commands.
+
 1. `init`
 initialize all structures of your program. You should allocate all space-needed
 dynamically and on per-need basis. You should not use any statically structures
