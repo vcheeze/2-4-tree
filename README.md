@@ -9,7 +9,7 @@ which you can execute the following commands.
 initialize all structures of your program. You should allocate all space-needed
 dynamically and on per-need basis. You should not use any statically structures
 defined up-front.
-2. `ins <studID><courseID><courseName><Grade>`:
+2. `ins <studID> <courseID> <courseName> <Grade>`:
 insert all pertitnent data for a specific course that a student (with <studID>)
 has taken.
 3. `load inputFile`:
