@@ -30,7 +30,7 @@ semester.
 8. `verify`:
 check all nodes of the indexing structure and verify that they comply with the
 2-4 tree properties.
-9. `del <studID><courseID>`:
+9. `del <studID> <courseID>`:
 delete the specific course for the student indicated by <studID>.
 10. `sdel <studID>`:
 delete all the information regarding student <studID> along with her courses
